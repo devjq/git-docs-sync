@@ -15,8 +15,8 @@ The app is a free beta on the Atlassian Marketplace, provided by AVIRA LLC.
 You need a Confluence Cloud site where you are a site admin, and a public GitHub repository.
 
 1. Install **Git Docs Sync for Confluence** from the Atlassian Marketplace.
-2. Open the app's configuration page: select **Git Docs Sync** in Confluence's settings, or
-   select **Configure** next to the app where you manage apps.
+2. Open the app's configuration page: in Atlassian Administration, go to **Connected apps**,
+   open the **⋯** menu next to Git Docs Sync for Confluence, and select **Configure**.
 3. Fill in the settings below and select **Save**.
 4. Select **Sync now**. When the sync finishes, the page shows its report.
 
