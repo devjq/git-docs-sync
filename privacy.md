@@ -4,7 +4,7 @@
 
 **Contact:** avirallcdev@gmail.com.
 
-**Effective date:** October 19, 2026.
+**Effective date:** October 20, 2026.
 
 ## What the app does with data
 
@@ -16,10 +16,12 @@ site admin chooses into your Confluence Cloud site as Confluence pages.
 - **Spaces:** basic information about the space your admin selects (its key, id and home page),
   so the app knows where to create pages.
 - **Pages:** the app creates and updates pages in that space. To avoid title clashes, it reads
-  the titles of existing pages there. It changes only pages it created.
-- **Permissions:** when an admin saves the settings or clicks **Sync now**, the app checks, with
-  that admin's Atlassian account id, that they are a Confluence admin and can edit the target
-  space. The id is used only for this check. It is not stored or logged.
+  the titles of existing pages there. It changes only pages it created, and pages that carry its
+  "Synced from GitHub" note for the same file (for example, pages it created before a reinstall).
+- **Permissions:** whenever someone uses the app's settings page, the app first checks that they
+  are a Confluence admin. When they save the settings or click **Sync now**, it also checks, with
+  their Atlassian account id, that they can edit the target space. The id is used only for these
+  checks. It is not stored or logged.
 
 ## Data the app stores
 
@@ -45,8 +47,11 @@ counts, file paths and HTTP status codes, never page content or data about your 
 ## Data sent outside Atlassian
 
 - **GitHub.** The app downloads the selected public repository from `github.com` and
-  `codeload.github.com`. Images in your documents are shown from `raw.githubusercontent.com`;
-  readers' browsers load them from GitHub.
+  `codeload.github.com`. Images stored in the repository are shown from
+  `raw.githubusercontent.com`; readers' browsers load them from GitHub.
+- **Other image addresses.** An image that a document gives by its full `https://` address (for
+  example a status badge) is shown from that address, so readers' browsers load it from that
+  site. The app itself does not fetch these images.
 - **Diagram rendering (optional, on by default).** For Mermaid and PlantUML blocks, the diagram
   source is encoded into an image address on `mermaid.ink` (Mermaid) or `kroki.io` (PlantUML).
   The app requests each address once at sync time to check it renders, and readers' browsers
@@ -55,7 +60,7 @@ counts, file paths and HTTP status codes, never page content or data about your 
 
 ## Personal data and credentials
 
-Apart from the permission check above, the app does not collect or process personal data about
+Apart from the permission checks above, the app does not collect or process personal data about
 your users, and it stores none. It does not use analytics or tracking, and it does not sell or
 share data. It asks for no passwords, tokens or other credentials: it reads only public GitHub
 repositories.

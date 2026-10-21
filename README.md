@@ -46,7 +46,8 @@ source stay in place and are no longer updated.
 - Links between your docs open the matching Confluence page, including links to a heading.
   Links to other files in the repository open them on GitHub. Web and email links stay as they
   are.
-- Images are shown in place. Images stored in the repository load from GitHub.
+- Images are shown in place. Images stored in the repository load from GitHub; an image given by
+  a full `https://` address, such as a badge, loads from that address.
 - Code blocks become Confluence code blocks. Tables and task lists carry over. HTML the app does
   not support is shown as text and never run.
 - Every synced page starts with a note that links to its source file on GitHub. Edit the
@@ -55,7 +56,8 @@ source stay in place and are no longer updated.
   file.
 - Files removed from the repository are listed in the sync report. Their pages are not deleted.
 - If someone deletes a synced page in Confluence, the next sync creates it again.
-- The app changes only pages it created.
+- The app changes only pages it created, and pages that carry its "Synced from GitHub" note for
+  the same file (for example after a reinstall).
 - Only one sync runs at a time. The sync report lists what was created, updated, unchanged or
   failed, and why.
 
@@ -73,6 +75,8 @@ Atlassian.
 - One repository folder per Confluence site.
 - Up to 500 Markdown files per sync, taken in alphabetical path order.
 - Markdown files over 1 MB are skipped and listed in the sync report.
+- Repositories up to 100 MB, measured as GitHub's download of the whole repository. A larger one
+  fails with a clear message.
 
 ## Security
 
